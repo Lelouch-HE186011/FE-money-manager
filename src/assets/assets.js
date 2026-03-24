@@ -34,12 +34,6 @@ export const SIDE_BAR_DATA = [
     },
     {
         id: "05",
-        label: "Expense",
-        icon: Coins,
-        path: "/expense",
-    },
-    {
-        id: "06",
         label: "Filters",
         icon: FunnelPlus,
         path: "/filter",

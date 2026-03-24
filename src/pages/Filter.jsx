@@ -1,6 +1,10 @@
+import Dashboard from "../components/Dashboard.jsx";
+
 const Filter = () => {
     return (
-        <div>Filter</div>
+        <Dashboard>
+            This is filter page
+        </Dashboard>
     )
 }
 

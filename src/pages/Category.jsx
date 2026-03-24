@@ -1,6 +1,10 @@
+import Dashboard from "../components/Dashboard.jsx";
+
 const Category = () => {
     return (
-        <div>Category</div>
+        <Dashboard>
+            This is category page
+        </Dashboard>
     )
 }
 

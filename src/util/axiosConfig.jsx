@@ -18,7 +18,7 @@ axiosConfig.interceptors.request.use(config => {
     )
 
     if (!shouldSkipToken) {
-        const accessToken = localStorage.getItem("token");
+        const accessToken = localStorage.getItem("");
         if (accessToken) {
             config.headers.Authorization = `Bearer ${accessToken}`
         }
@@ -49,4 +49,3 @@ axiosConfig.interceptors.response.use((response) => {
 });
 
 export default axiosConfig;
-

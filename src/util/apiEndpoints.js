@@ -7,7 +7,9 @@ export const API_ENDPOINTS = {
     GET_USER_INFO: "auth/account",
     REGISTER: "/register",
     GET_ALL_CATEGORIES: "/categories",
-
+    UPDATE_CATEGORIES: (categoryId) => `/categories/${categoryId}`,
+    ADD_CATEGORY: "/categories",
+    GET_ALL_INCOMES: "/incomes",
     UPLOAD_IMAGE: `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`
 }
 

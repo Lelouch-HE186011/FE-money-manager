@@ -124,7 +124,7 @@ const Income = () => {
     }
 
     const handleDownloadIncomeDetails = async () => {
-        
+
         try {
             const response = await axiosConfig.get(API_ENDPOINTS.INCOME_EXCEL_DOWNLOAD, {responseType: "blob"});
             if (response.status === 200) {
@@ -157,6 +157,7 @@ const Income = () => {
             toast.error(error.response?.data?.message || "Failed to send income details");
         }
     }
+    
 
     useEffect(() => {
         fetchIncomeDetails();

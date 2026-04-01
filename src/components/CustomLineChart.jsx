@@ -9,14 +9,14 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, color = "#8b5cf6" }) => {
     if (active && payload && payload.length) {
         return (
             <div className="bg-white p-3 rounded-lg border border-gray-200 shadow-lg min-w-[150px]">
                 <p className="font-semibold text-sm mb-2 text-gray-800">{label}</p>
                 <div className="border-t border-gray-200 py-2 pb-2">
                     <p className="text-sm font-bold flex items-center justify-between text-gray-800">
-                        Total:<span className="text-purple-700 ml-4">{payload[0].value.toLocaleString('vi-VN')} VNĐ</span>
+                        Total:<span style={{color: color}} className="ml-4">{payload[0].value.toLocaleString('vi-VN')} VNĐ</span>
                     </p>
                 </div>
                 <div className="border-t border-gray-200 pt-2">
@@ -34,14 +34,14 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
-const CustomLineChart = ({ data }) => {
+const CustomLineChart = ({ data, color = "#8b5cf6" }) => {
     return (
         <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={data} margin={{ top: 10, right: 30, left: 10, bottom: 0 }}>
                 <defs>
-                    <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                    <linearGradient id={`colorAmount-${color.replace('#','')}`} x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor={color} stopOpacity={0.4} />
+                        <stop offset="95%" stopColor={color} stopOpacity={0} />
                     </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
@@ -60,18 +60,18 @@ const CustomLineChart = ({ data }) => {
                     tickMargin={10}
                 />
                 <Tooltip 
-                    content={<CustomTooltip />} 
+                    content={<CustomTooltip color={color} />} 
                     cursor={{ stroke: '#d1d5db', strokeWidth: 1, strokeDasharray: "4 4" }} 
                 />
                 <Area 
                     type="monotone" 
                     dataKey="amount" 
-                    stroke="#8b5cf6" 
+                    stroke={color} 
                     strokeWidth={2} 
                     fillOpacity={1} 
-                    fill="url(#colorAmount)"
-                    dot={{ r: 4, fill: "#8b5cf6", stroke: "#8b5cf6", strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: "#8b5cf6", stroke: "#fff", strokeWidth: 2 }} 
+                    fill={`url(#colorAmount-${color.replace('#','')})`}
+                    dot={{ r: 4, fill: color, stroke: color, strokeWidth: 2 }}
+                    activeDot={{ r: 6, fill: color, stroke: "#fff", strokeWidth: 2 }} 
                 />
             </AreaChart>
         </ResponsiveContainer>
